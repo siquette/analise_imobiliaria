@@ -4,11 +4,11 @@ output: html_notebook
 ---
 
 
+
 ```{r}
 
-
 # Carregar os pacotes (opcional, mas comum após a instalação)
-library(rgdal)
+
 library(dplyr)
 library(sf)
 library(tmap)
@@ -22,4 +22,55 @@ library(readxl)
 library(spdep)
 library(kableExtra)
 ```
+```{r}
+# Carregando shapefile da cidade de São Paulo usando 'sf'
+# O 'sf::st_read()' já carrega o shapefile como um objeto 'sf'.
+shp_saopaulo_sf <- sf::st_read("C:\\Users\\Rodrigo - H2R\\OneDrive - Conhecimento e Ação em Marketing Ltda\\Documentos\\testes\\analise_imovel\\dados\\Bairros_Distritos_CidadeSP\\LAYER_DISTRITO\\DEINFO_DISTRITO.shp")
+
+# ---
+## Transformando o CRS para WGS84 (EPSG:4326)
+
+# O pacote 'sf' usa 'st_transform()' para mudar o sistema de coordenadas.
+# O CRS de origem do seu shapefile é 'SIRGAS 2000', o que é bom!
+# 'st_transform()' cuida da projeção e do datum.
+shp_saopaulo_sf_wgs84 <- sf::st_transform(shp_saopaulo_sf, crs = 4326)
+
+
+
+# Alternativamente, para ver os dados como uma tabela normal (sem a geometria)
+# head(sf::st_drop_geometry(shp_saopaulo_sf_wgs84))
+
+# Verifique os nomes das colunas no seu objeto sf
+names(shp_saopaulo_sf_wgs84)
+# ---
+## Padronizando os Nomes das Distritos
+
+# Alterando o nome das distritos (NOME_DIST) para minúsculas e substituindo espaços por hífens.
+# A operação 'mutate' do dplyr funciona perfeitamente com objetos 'sf'.
+sf_shp_final <- shp_saopaulo_sf_wgs84 %>%
+  dplyr::mutate(NOME_DIST = tolower(gsub(" ", "-", NOME_DIST)))
+
+# Agora, 'sf_shp_final' é o seu objeto 'sf' pronto para uso,
+# com o CRS transformado e os nomes dos distritos padronizados.
+```
+
+```{r}
+# Carregando objeto sf do metrô de São Paulo
+sp_metro_sf <- sf::st_read("C:/Users/Rodrigo - H2R/OneDrive - Conhecimento e Ação em Marketing Ltda/Documentos/testes/analise_imovel/dados/estacao_metro.gpkg")
+
+# ---
+
+sp_metro_utm <- sf::st_transform(sp_metro_sf, crs = 22523)
+
+# ---
+
+sp_metro_geod <- sf::st_transform(sp_metro_sf, crs = 4326)
+
+# Para verificar o CRS atual de qualquer objeto sf:
+# print(sf::st_crs(sp_metro_sf))
+# print(sf::st_crs(sp_metro_utm))
+# print(sf::st_crs(sp_metro_geod))
+```
+
+
 
