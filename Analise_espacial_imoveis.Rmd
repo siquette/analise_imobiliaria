@@ -1,0 +1,25 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+
+
+# Carregar os pacotes (opcional, mas comum após a instalação)
+library(rgdal)
+library(dplyr)
+library(sf)
+library(tmap)
+library(plotly)
+library(ggplot2)
+library(cowplot)
+library(tibble)
+library(stringi)
+library(corrplot)
+library(readxl)
+library(spdep)
+library(kableExtra)
+```
+

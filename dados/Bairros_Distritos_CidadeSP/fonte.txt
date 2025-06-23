@@ -1,0 +1,10 @@
+Os bairros em SP variam de acordo com a definição popular e portanto não há uma fonte oficial. A fonte oficial de dados é para os Distritos do Município de São Paulo
+
+Os distritos foram criados mediante a Lei nº 11.220/1992. Seus limites foram estabelecidos a partir de estudos elaborados por diversos órgãos do Executivo municipal, tendo em conta fatores físico-territoriais, demográficos, urbanísticos, econômicos e político-administrativos. O arquivo vetorial e os dados pertencem à Prefeitura e são armazenados na PRODAM. Último ajuste na delimitação dos distritos ocorreu em julho de 2015.
+
+
+Campo	Valor
+Fonte:	http://www.prefeitura.sp.gov.br/cidade/secretarias/desenvolvimento_urbano/dados_estatisticos/index.php?p=160798
+Autor	SMDU - Secretaria Municipal de Desenvolvimento Urbano
+Última Atualização	Dezembro 9, 2015, 13:28
+Criado	Dezembro 7, 2015, 15:58
